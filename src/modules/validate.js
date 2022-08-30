@@ -16,7 +16,7 @@ const validate = () => {
     }))
 
     valEmail.forEach(valEmail => valEmail.addEventListener('input', (e) => {
-        e.target.value = e.target.value.replace(/[^@ - _ .! ~ * ' a-z A-Z]+(.*)/, '$1')
+        e.target.value = e.target.value.replace(/[^@ - _ .! ~ * ' a-z A-Z 0-9]+(.*)/, '$1')
     }))
 
     valName.forEach(valName => valName.addEventListener('input', (e) => {
