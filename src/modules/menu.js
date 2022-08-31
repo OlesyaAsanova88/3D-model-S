@@ -20,8 +20,6 @@ const menu = () => {
                 menu.classList.remove('active-menu')
             } else if (e.target.closest('ul>li>a')) {
                 menu.classList.remove('active-menu')
-            } else {
-                menu.classList.remove('active-menu')
             }
     })
 }
