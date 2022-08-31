@@ -1,7 +1,6 @@
 const slider = () => {
     const sliderBlock = document.querySelector('.portfolio-content')
     const slides = document.querySelectorAll('.portfolio-item')
-    const dots = document.querySelectorAll('.dot')
     const ulDots = document.querySelector('.portfolio-dots')
     const timeIntreval = 2000
     let interval
@@ -9,14 +8,17 @@ const slider = () => {
 
     const newDot = () => {
         slides.forEach(() => {
-            const dot = document.createElement('li')
-            dot.classList.add('dot')
-            ulDots.appendChild(dot)
+            const li = document.createElement('li')
+            li.classList.add('dot')
+            ulDots.appendChild(li)
         })
         ulDots.children[0].classList.add('dot-active')
         console.log(ulDots)
+
     }
     newDot()
+
+    const dots = document.querySelectorAll('.dot')
 
     const prevSlide = (elems, index, strClass) => {
         elems[index].classList.remove(strClass)
