@@ -13,8 +13,6 @@ const slider = () => {
             ulDots.appendChild(li)
         })
         ulDots.children[0].classList.add('dot-active')
-        console.log(ulDots)
-
     }
     newDot()
 

@@ -1,6 +1,9 @@
+import { animate } from './helpers'
+
 const modal = () => {
     const modal = document.querySelector('.popup')
     const buttons = document.querySelectorAll('.popup-btn')
+    const modalContent = document.querySelector('.popup-content')
     //const closeBtn = modal.querySelector('.popup-close')
 
     buttons.forEach(btn => {
@@ -8,8 +11,18 @@ const modal = () => {
             if (window.innerWidth < 768) {
                 modal.style.display = 'block'
             } else {
+                animate({
+                    duration: 1000,
+                    timing(timeFraction) {
+                        return timeFraction;
+                    },
+                    draw(progress) {
+                        modalContent.style.top = (progress * 25) + '%';
+                    }
+                });
+
                 modal.style.display = 'block'
-                myAnimation()
+                //myAnimation()
             }
         })
     })
@@ -22,19 +35,19 @@ const modal = () => {
         }
     })
 
-    const myAnimation = () => {
-        let modalContent = document.querySelector('.popup-content')
-        let pos = 0
-        let id = setInterval(frame, 10)
-        function frame() {
-            if (pos == 250) {
-                clearInterval(id)
-            } else {
-                pos++
-                modalContent.style.top = pos + 'px'
-            }
-        }
-    }
+    //const myAnimation = () => {
+    //let modalContent = document.querySelector('.popup-content')
+    //let pos = 0
+    //let id = setInterval(frame, 10)
+    //function frame() {
+    //if (pos == 250) {
+    // clearInterval(id)
+    //} else {
+    // pos++
+    //modalContent.style.top = pos + 'px'
+    //}
+    //}
+    //}
 }
 
 export default modal
