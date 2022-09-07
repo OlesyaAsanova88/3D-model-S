@@ -5,6 +5,7 @@ import validate from './modules/validate'
 import tabs from './modules/tabs'
 import slider from './modules/slider'
 import calc from './modules/calc'
+import sendForm from './modules/sendForm'
 
 timer('26 august 2022')
 menu()
@@ -13,3 +14,14 @@ validate()
 tabs()
 slider()
 calc(100)
+sendForm({
+    formId: 'form1',
+    formId2: 'form2',
+    formId3: 'form3',
+    someElem: [
+        {
+            type: 'block',
+            id: 'total'
+        }
+    ]
+})
