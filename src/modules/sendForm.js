@@ -6,14 +6,25 @@ const sendForm = ({ formId, formId2, formId3, someElem = [] }) => {
     const loadText = 'Идет загрузка...'
     const errorText = 'Ошибка =('
     const successText = 'Данные отправлены, наш менеджер свяжется с вами в ближайшее время'
+    const valMessage = document.querySelector('[placeholder="Ваше сообщение"]')
+    const valName = document.querySelectorAll('[placeholder="Ваше имя"]')
+    const valPhone = document.querySelectorAll('[placeholder="Номер телефона"]')
+    const valEmail = document.querySelectorAll('[placeholder="E-mail"]')
 
-    const validate = (list) => {
+    const validate = () => {
         let success = true
-        //list.forEach(input => {
-        //if (!input.classList.contains('success')) {
-        //success = false
-        //}
-        //})
+        valMessage.addEventListener('input', (e) => {
+            e.target.value = e.target.value.replace(/[^а-яёА-ЯЁ 0-9 , . - \s]/g, "")
+        })
+        valName.forEach(valName => valName.addEventListener('input', (e) => {
+            e.target.value = e.target.value.replace(/[^а-яёА-ЯЁ ]/g, "")
+        }))
+        valPhone.forEach(valPhone => valPhone.addEventListener('input', (e) => {
+            e.target.value = e.target.value.replace(/[^+() 0-9 -]+(.*)/, '$1')
+        }))
+        valEmail.forEach(valEmail => valEmail.addEventListener('input', (e) => {
+            e.target.value = e.target.value.replace(/[^@ - _ .! ~ * ' a-z A-Z 0-9]+(.*)/, '$1')
+        }))
         return success
     }
 
@@ -28,7 +39,7 @@ const sendForm = ({ formId, formId2, formId3, someElem = [] }) => {
     }
 
     const submitForm = () => {
-        const formElements = form.querySelectorAll('input')
+        const formElements = document.querySelectorAll('input')
         const formData = new FormData(form)
         const formBody = {}
 
