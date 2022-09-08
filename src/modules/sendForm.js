@@ -16,11 +16,24 @@ const sendForm = ({ formId, formId2, formId3, someElem = [] }) => {
         valMessage.addEventListener('input', (e) => {
             e.target.value = e.target.value.replace(/[^а-яёА-ЯЁ 0-9 , . - \s]/g, "")
         })
+
+
+
         valName.forEach(valName => valName.addEventListener('input', (e) => {
-            e.target.value = e.target.value.replace(/[^а-яёА-ЯЁ ]/g, "")
+            if (e.target.value.length < 2) {
+                alert('Имя должно содержать более 2ух букв!')
+            } else {
+                e.target.value = e.target.value.replace(/[^а-яёА-ЯЁ ]/g, "")
+            }
+
         }))
         valPhone.forEach(valPhone => valPhone.addEventListener('input', (e) => {
-            e.target.value = e.target.value.replace(/[^+() 0-9 -]+(.*)/, '$1')
+            if (e.target.value.length < 12) {
+                alert('Телефон должен содержать не менее 11 символов!')
+            } else {
+                e.target.value = e.target.value.replace(/[^+() 0-9 -]+(.*)/, '$1')
+            }
+
         }))
         valEmail.forEach(valEmail => valEmail.addEventListener('input', (e) => {
             e.target.value = e.target.value.replace(/[^@ - _ .! ~ * ' a-z A-Z 0-9]+(.*)/, '$1')
