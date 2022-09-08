@@ -36,7 +36,7 @@ const sendForm = ({ formId, formId2, formId3, someElem = [] }) => {
 
         }))
         valEmail.forEach(valEmail => valEmail.addEventListener('input', (e) => {
-            e.target.value = e.target.value.replace(/[^@ - _ .! ~ * ' a-z A-Z 0-9]+(.*)/, '$1')
+            e.target.value = e.target.value.replace(/^w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/gm)
         }))
         return success
     }
