@@ -6,6 +6,8 @@ const sendForm = ({ formId, formId2, formId3, someElem = [] }) => {
     const loadText = 'Идет загрузка...'
     const errorText = 'Ошибка =('
     const successText = 'Данные отправлены, наш менеджер свяжется с вами в ближайшее время'
+    const sentText = 'Отправлено'
+    const modalBlock = document.querySelector('.main-form')
     const valMessage = document.querySelector('[placeholder="Ваше сообщение"]')
     const valName = document.querySelectorAll('[placeholder="Ваше имя"]')
     const valPhone = document.querySelectorAll('[placeholder="Номер телефона"]')
@@ -72,7 +74,7 @@ const sendForm = ({ formId, formId2, formId3, someElem = [] }) => {
                 formBody[elem.id] = element.value
             }
         })
-        console.log('submit')
+
 
         if (validate(formElements)) {
             sendData(formBody).then(data => {
@@ -80,6 +82,7 @@ const sendForm = ({ formId, formId2, formId3, someElem = [] }) => {
 
                 formElements.forEach(input => {
                     input.value = ''
+
                 })
             })
                 .catch(error => {
@@ -110,6 +113,10 @@ const sendForm = ({ formId, formId2, formId3, someElem = [] }) => {
             event.preventDefault()
 
             submitForm()
+
+            modalBlock.insertAdjacentHTML('beforeend', `
+            <div>Отправлено</div>
+        `)
         })
     } catch (error) {
         console.log(error.message)

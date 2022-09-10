@@ -37,7 +37,7 @@ const timer = (deadline) => {
         timerMinutes.textContent = getTime.minutes >= 10 ? getTime.minutes : `0${getTime.minutes}`
         timerSeconds.textContent = getTime.seconds >= 10 ? getTime.seconds : `0${getTime.seconds}`
 
-        if (getTime.timeRemaining < 0) {
+        if (getTime.timeRemaining > 0) {
             timeInterval
         } else {
             clearInterval(timeInterval)
